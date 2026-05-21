@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home</title>
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="logo">CINEMATCH</span>
+          <nav class="top-nav">
+            <a class="nav-item active" href="#">Film</a>
+            <a class="nav-item" href="#">Watchlist</a>
+            <a class="nav-item" href="#">README</a>
+            <a class="nav-item" href="#">Rubrik Penilaian</a>
+          </nav>
+        </div>
+        <div class="user-actions">
+          <div class="avatar">B</div>
+          <a href="login.html" class="logout">Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container main-content">
+      <div class="search-row">
+        <input id="search" class="search-input" placeholder="Cari film..." />
+        <div class="controls">
+          <select id="genre" class="genre-select">
+            <option value="all">Semua Genre</option>
+            <option value="action">Action</option>
+            <option value="comedy">Comedy</option>
+            <option value="drama">Drama</option>
+          </select>
+          <button id="searchBtn" class="btn">Cari</button>
+        </div>
+      </div>
+
+      <div class="filter-row">
+        <button class="chip active">Tayang</button>
+        <button class="chip">Popular</button>
+        <button class="chip">Top Rated</button>
+      </div>
+
+      <div id="movies-container" class="movies-grid"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">&copy; <span id="year"></span> CINEMATCH</div>
+    </footer>
+
+    <script type="module" src="js/home.js"></script>
+  </body>
+</html>
