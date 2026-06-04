@@ -1,5 +1,4 @@
-//!  mengambil auth dari file firebase.js
-import { auth } from "./firebase.js";
+import { auth, db } from "./firebase.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -8,8 +7,13 @@ import {
   signOut,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {
+  doc,
+  getDoc,
+  setDoc,
+  serverTimestamp,
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-//!  fungsi untuk register user baru dengan googleauthprovider dan singinwithpopup
 export const registerWithEmailAndPassword = async (email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
@@ -47,7 +51,6 @@ export const logout = async () => {
   }
 };
 
-//!  fungsi untuk login user dengan loginwithgoogle
 const provider = new GoogleAuthProvider();
 export const signInWithGoogle = async () => {
   try {
@@ -58,3 +61,36 @@ export const signInWithGoogle = async () => {
     throw error;
   }
 };
+
+export async function saveUserToFirestore(user) {
+  const userRef = doc(db, "users", user.uid);
+  const snap = await getDoc(userRef);
+  if (!snap.exists()) {
+    await setDoc(userRef, {
+      displayName: user.displayName || "User",
+      email: user.email,
+      photoURL: user.photoURL || "",
+      createdAt: serverTimestamp(),
+      lastLogin: serverTimestamp(),
+    });
+  } else {
+    await setDoc(userRef, { lastLogin: serverTimestamp() }, { merge: true });
+  }
+}
+
+export function authGuard(redirectIfLoggedIn = false) {
+  return new Promise((resolve) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      unsubscribe();
+      if (redirectIfLoggedIn && user) {
+        window.location.href = "home.html";
+        return;
+      }
+      if (!redirectIfLoggedIn && !user) {
+        window.location.href = "login.html";
+        return;
+      }
+      resolve(user);
+    });
+  });
+}

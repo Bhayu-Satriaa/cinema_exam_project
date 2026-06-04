@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home</title>
+    <title>CINEMATCH</title>
     <link rel="stylesheet" href="css/home.css" />
   </head>
   <body>
@@ -12,40 +12,45 @@
         <div class="brand">
           <span class="logo">CINEMATCH</span>
           <nav class="top-nav">
-            <a class="nav-item active" href="#">Film</a>
-            <a class="nav-item" href="#">Watchlist</a>
-            <a class="nav-item" href="#">README</a>
-            <a class="nav-item" href="#">Rubrik Penilaian</a>
+            <a class="nav-item active" href="javascript:void(0)" data-section="film">Film</a>
+            <a class="nav-item" href="watchlist.html">Watchlist</a>
           </nav>
         </div>
         <div class="user-actions">
-          <div class="avatar">B</div>
-          <a href="login.html" class="logout">Logout</a>
+          <div class="avatar" id="avatar">U</div>
+          <span class="user-name" id="user-name">User</span>
+          <a href="#" class="logout" id="logout-btn">Logout</a>
         </div>
       </div>
     </header>
 
     <main class="container main-content">
-      <div class="search-row">
-        <input id="search" class="search-input" placeholder="Cari film..." />
-        <div class="controls">
-          <select id="genre" class="genre-select">
-            <option value="all">Semua Genre</option>
-            <option value="action">Action</option>
-            <option value="comedy">Comedy</option>
-            <option value="drama">Drama</option>
-          </select>
-          <button id="searchBtn" class="btn">Cari</button>
+      <div id="film-section">
+        <div class="search-row">
+          <input
+            id="search"
+            class="search-input"
+            placeholder="Cari film..."
+          />
+          <div class="controls">
+            <select id="genre" class="genre-select">
+              <option value="all">Semua Genre</option>
+            </select>
+            <button id="searchBtn" class="btn">Cari</button>
+          </div>
         </div>
+
+        <div class="filter-row">
+          <button class="chip active" data-mode="now_playing">Tayang</button>
+          <button class="chip" data-mode="popular">Popular</button>
+          <button class="chip" data-mode="top_rated">Top Rated</button>
+        </div>
+
+        <div id="movies-container" class="movies-grid"></div>
+
+        <button id="load-more" class="btn load-more hidden">Muat Lainnya</button>
       </div>
 
-      <div class="filter-row">
-        <button class="chip active">Tayang</button>
-        <button class="chip">Popular</button>
-        <button class="chip">Top Rated</button>
-      </div>
-
-      <div id="movies-container" class="movies-grid"></div>
     </main>
 
     <footer class="site-footer">

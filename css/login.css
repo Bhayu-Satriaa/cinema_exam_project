@@ -1,39 +1,60 @@
-/* Login page specific styles */
 body {
+  background: #141414;
+  color: #e5e5e5;
   min-height: 100vh;
   margin: 0;
-  display: grid;
-  place-items: center;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 24px;
-  background: linear-gradient(180deg, #0f1724 0%, #121a2a 100%);
-  color: #e2e8f0;
+}
+
+.login-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.6rem;
+  letter-spacing: 0.02rem;
+  color: #e50914;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
 .form {
   width: min(100%, 420px);
-  padding: 32px 28px;
-  border-radius: 24px;
-  background: rgba(15, 23, 42, 0.94);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+  padding: 48px 40px 40px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  gap: 24px;
 }
 
 .form p {
   margin: 0;
-  font-size: 1.45rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #fff;
 }
 
 .form p span {
   display: block;
-  margin-top: 6px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #94a3b8;
+  margin-top: 8px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #b3b3b3;
 }
 
 .oauthButton {
@@ -43,28 +64,19 @@ body {
   gap: 10px;
   width: 100%;
   padding: 14px 16px;
-  border-radius: 16px;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  background: rgba(255, 255, 255, 0.06);
-  color: #f8fafc;
+  border-radius: 4px;
+  border: none;
+  background: #e50914;
+  color: #fff;
   cursor: pointer;
-  font-size: 0.98rem;
+  font-size: 1rem;
   font-weight: 600;
-  transition:
-    transform 180ms ease,
-    background 180ms ease;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  transition: background 180ms ease;
 }
 
 .oauthButton:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.oauthButton::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
+  background: #f40612;
 }
 
 .icon {
@@ -72,13 +84,28 @@ body {
   height: 20px;
 }
 
-button,
-.oauthButton {
-  position: relative;
+.login-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #808080;
+  font-size: 0.85rem;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 @media (max-width: 520px) {
+  .login-header {
+    padding: 0 24px;
+  }
+
   .form {
-    padding: 24px 20px;
+    padding: 32px 24px;
+  }
+
+  .form p {
+    font-size: 1.4rem;
   }
 }

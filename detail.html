@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detail Film - CINEMATCH</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/detail.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="logo">CINEMATCH</span>
+          <nav class="top-nav">
+            <a class="nav-item" href="home.html">&larr; Kembali</a>
+          </nav>
+        </div>
+        <div class="user-actions">
+          <div class="avatar" id="avatar">U</div>
+          <span class="user-name" id="user-name">User</span>
+          <a href="#" class="logout" id="logout-btn">Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container main-content">
+      <div id="detail-loading" class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Memuat detail film...</p>
+      </div>
+
+      <div id="detail-container" class="detail-layout hidden">
+        <div class="detail-poster">
+          <img id="detail-poster-img" src="" alt="Poster" />
+        </div>
+        <div class="detail-info">
+          <h1 id="detail-title" class="detail-title">-</h1>
+          <p id="detail-tagline" class="detail-tagline"></p>
+
+          <div class="detail-meta">
+            <span id="detail-rating">★ -</span>
+            <span id="detail-year">-</span>
+            <span id="detail-runtime">-</span>
+          </div>
+
+          <div id="detail-genres" class="detail-genres"></div>
+
+          <h3>Sinopsis</h3>
+          <p id="detail-overview" class="detail-overview">-</p>
+
+          <div class="detail-actions">
+            <button id="wl-btn" class="btn btn-primary">+ Watchlist</button>
+            <button id="wt-btn" class="btn btn-secondary">&#9711; Tandai Ditonton</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">&copy; <span id="year"></span> CINEMATCH</div>
+    </footer>
+
+    <script type="module" src="js/detail.js"></script>
+  </body>
+</html>
